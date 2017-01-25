@@ -1,0 +1,31 @@
+extend layout
+
+block content
+  h1 TOP 100 MOVIES OF ROTTEN TOMATOES 
+  p Here is the list of movies.
+  p
+    a#delete.btn.btn-default(hrer="#") Delete
+    |  
+    a#add.btn.btn-default(href="/movies/add") Add new
+  table.table
+    thead
+      tr
+        th
+        th Title
+        th Rank
+        th Rating
+        th Views
+    tbody
+      if !movies.length
+        tr
+          td(colspan=4) You should add a movie
+      else
+        each movie in movies
+          tr
+            td
+              input(type="checkbox", id=movie.id)
+            td
+              a(href="/movies/#{movie.id}") #{movie.title}
+            td #{movie.rank}
+            td #{movie.rating}
+            td #{movie.views}
