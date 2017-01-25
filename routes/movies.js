@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var moment = require('moment');
 var Movie = require('../models/movies');
-var flash = require('req-flash');
 
-app.use(flash());
 router.use(function(req, res, next) {
   if (!req.user) {
     res.redirect('/auth/login')
@@ -28,8 +26,7 @@ router.post('/', function(req, res) {
       if(err) {
         res.status(400).send('Error saving new movie: ' + err);
       } else {
-        req.flash('successMessage', 'You are successfully using req-flash');
-        res.redirect('/movies');
+        res.send('Success, please go back to movie list')
       }
     })
 });
