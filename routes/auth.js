@@ -1,4 +1,4 @@
-var passport = require('passport');
+ var passport = require('passport');
 var User = require('../models/user');
 var express = require('express');
 var router = express.Router();
@@ -15,7 +15,7 @@ router.route('/register')
       }
 
       req.login(account, function(err) {
-        res.redirect('/movies');
+        res.redirect('/');
       });
     })
   })
@@ -28,7 +28,7 @@ router.get('/login', function(req, res, next) {
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/movies');
+    res.redirect('/');
   });
 
 router.all('/logout', function(req, res, next) {
