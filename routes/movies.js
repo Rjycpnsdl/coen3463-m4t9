@@ -21,7 +21,9 @@ router.post('/', function(req, res) {
       title: req.body.title,
       rank: req.body.rank,
       rating: req.body.rating,
-      views: req.body.views
+      views: req.body.views,
+      link: req.body.link,
+      sypnosis: req.body.sypnosis
     }).save(function(err, movie, count) {
       if(err) {
         res.status(400).send('Error saving new movie: ' + err);
@@ -49,25 +51,27 @@ router.route('/:movie_id')
     res.render('edit', {movie: movie, moment: moment});
   })
 
+  // .post(function(req, res) {
+  //   movie.sypnosis.push({
+  //     sypnosis: req.body.sypnosis
+  //   });
+
+  //   movie.save(function(err, movie, count) {
+  //     if(err) {
+  //       res.status(400).send('Error editing: ' + err);
+  //     } else {
+  //       res.send('Success!');
+  //     }
+  //   });
+  // })
+
   .post(function(req, res) {
-    movie.notes.push({
-      note: req.body.notes
-    });
-
-    // movie.save(function(err, movie, count) {
-    //   if(err) {
-    //     res.status(400).send('Error adding note: ' + err);
-    //   } else {
-    //     res.send('Note added!');
-    //   }
-    // });
-  })
-
-  .put(function(req, res) {
     movie.title = req.body.title;
     movie.rank = req.body.rank;
     movie.rating = req.body.rating;
     movie.views = req.body.views;
+    movie.link = req.body.link;
+    movie.sypnosis = req.body.sypnosis;
 
     movie.save(function(err, movie, count) {
       if(err) {

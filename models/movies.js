@@ -7,13 +7,15 @@ var movieSchema = new Schema({
   rank: String,
   rating: String,
   views: String,
-  notes: [{
-    postedDate: {
-      type: Date,
-      'default': Date.now
-    },
-    note: String
-  }]
+  link: String,
+  sypnosis: String,
+  // dateCreated: [{
+  //   postedDate: {
+  //     type: Date,
+  //     'default': Date.now
+  //   },
+  //   isDate: String
+  // }]
 });
 
 module.exports = mongoose.model('Movie', movieSchema);
