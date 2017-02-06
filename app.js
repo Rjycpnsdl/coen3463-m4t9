@@ -10,6 +10,10 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+const methodOverride = require('method-override')
+const restify = require('express-restify-mongoose')
+const router = express.Router()
+
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -45,17 +49,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+      "maxAge": 86400000,
+    }
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 var User = require('./models/user');
+var Movie = require('./models/movies');
 passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+restify.serve(router, Movie);
+app.use(router);
 
 app.use('/', index);
 app.use('/users', users);
