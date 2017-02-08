@@ -34,8 +34,34 @@ html
                 span.icon-btn
                   i.fa.fa-trash
         .columns.files
-           ul
-              li#table-body
+           table.table
+              thread
+                tr
+                  th
+                  th Title
+                  th Rank
+                  th Rating
+                  th Views
+                  th Link
+                  th Sypnosis
+                tbody#table-body
+            //-    if !movies.length
+            //-      tr
+            //-        td(colspan=4) You should add a movie
+            //-    else
+            //-      each movie in movies
+            //-        tr
+            //-          td
+            //-            input(type="checkbox", id=movie.id)
+            //-          td #{movie.title}
+            //-          td #{movie.rank}
+            //-          td #{movie.rating}
+            //-          td #{movie.views}
+            //-          td 
+            //-            a(href="#{movie.link}") #{movie.link}
+            //-          td #{movie.sypnosis}
+            //-          td
+            //-            a#edit.btn-default(href="/movies/#{movie.id}") Edit
     footer.footer
       .container
         .has-text-centered

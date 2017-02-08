@@ -25,8 +25,8 @@ if (window.location.pathname === '/movies') {
       var tbody = document.getElementById('table-body');
       movies.forEach(function(movie) {
         // tbody.insertAdjacentHTML('beforeend', '<tr> <td>  <input type="checkbox" id="' + movie._id + '" />  </td>  <td>  <a href="/movies/#' + movie._id + '">' + movie.title + '</a></td> <td> ' + movie.rank + '</td> <td>' + movie.sypnosis + ' </td> </tr>');
-        //tbody.insertAdjacentHTML('afterbegin', '<tr> <td>  <input type="checkbox" id="' + movie._id + '" />  </td>  <td> ' + movie.title + ' </td> <td> ' + movie.rank + ' </td> <td>' + movie.rating + ' </td> <td>' + movie.views + ' </td> <td><a href="movie.link' + movie.link + '" </a> </td> <td> ' + movie.sypnosis + ' </td> </tr>');
-        tbody.insertAdjacentHTML('beforeend', '<li><a class="panel-block is-active" href="/movies/' + movie._id + '">' + movie.title + '</a></li>');
+        tbody.insertAdjacentHTML('afterbegin', '<tr> <td>  <input type="checkbox" id="' + movie._id + '" />  </td>  <td> ' + movie.title + ' </td> <td> ' + movie.rank + ' </td> <td>' + movie.rating + ' </td> <td>' + movie.views + ' </td> <td><a href="' + movie.link + '"</a> '+ movie.link +' </td> <td> ' + movie.sypnosis + ' </td> <td><a href="/movies/' + movie._id + '"> EDIT </a> </td> </tr>');
+        //tbody.insertAdjacentHTML('beforeend', '<li><a class="panel-block is-active" href="/movies/' + movie._id + '">' + movie.title + '</a></li>');
       });
     })
   });
