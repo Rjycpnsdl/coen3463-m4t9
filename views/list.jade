@@ -1,0 +1,76 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title ROTTEN TOMATOES -Top 100 Movies
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet', type='text/css', href='../stylesheets/bulma.css')
+    link(rel='stylesheet', type='text/css', href='../stylesheets/aside.css')
+  body
+    nav#top.nav.is-dark.has-shadow
+      .container
+        .nav-left
+          a.nav-item(href='/')
+            img(src='https://upload.wikimedia.org/wikipedia/en/thumb/6/6f/Rotten_Tomatoes_logo.svg/1280px-Rotten_Tomatoes_logo.svg.png', alt='Description')
+    .columns
+      aside.column.is-2.aside.hero.is-fullheight.is-hidden-mobile
+        div
+          .main
+            a.item.active(href='/movies')
+              span.icon
+                i.fa.fa-home
+              span.name Movie Lists
+      .content.column.is-10
+        .title.is-2 TOP 100 ROTTEN TOMATOES MOVIES
+        .nav.menu
+          .container
+            .nav-left
+              a.nav-item.is-tab(href="/movies/add")
+                span.icon-btn
+                  i.fa.fa-plus
+              a#delete.btn.nav-item.is-tab(href="/movies")
+                span.icon-btn
+                  i.fa.fa-trash
+        .columns.files
+            table.table
+              thread
+                tr
+                  th
+                  th Title
+                  th Rank
+                  th Rating
+                  th Views
+                  th Link
+                  th Sypnosis
+              tbody
+                if !movies.length
+                  tr
+                    td(colspan=4) You should add a movie
+                else
+                  each movie in movies
+                    tr
+                      td
+                        input(type="checkbox", id=movie.id)
+                      td #{movie.title}
+                      td #{movie.rank}
+                      td #{movie.rating}
+                      td #{movie.views}
+                      td 
+                        a(href="#{movie.link}") #{movie.link}
+                      td #{movie.sypnosis}
+                      td
+                        a#edit.btn-default(href="/movies/#{movie.id}") Edit
+    footer.footer
+      .container
+        .has-text-centered
+          p
+            strong Top 100 Movies of ROTTEN TOMATOES
+            |  by 
+            a(href='#') TEAM 9
+          p
+            a.icon(href='/')
+    script(type="text/javascript", src="/javascripts/jquery-min.js")
+    script(type="text/javascript", src="/javascripts/main.js")
+    script(type="text/javascript", src="/javascripts/bulma.js")
